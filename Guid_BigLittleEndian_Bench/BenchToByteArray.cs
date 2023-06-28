@@ -27,7 +27,7 @@ public class BenchToByteArray
     }
 
     [Benchmark]
-    public void GN_FromSpan()
+    public void GN_ToByteArray()
     {
         _ = guidN.ToByteArray();
         _ = guidN.ToByteArray();

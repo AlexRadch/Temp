@@ -13,7 +13,7 @@ public class BenchTryWriteBytes
     private byte[] toBytes = new byte[16];
 
     [Benchmark(Baseline = true)]
-    public void GO_ToByteArray()
+    public void GO_TryWriteBytes()
     {
         guidO.TryWriteBytes(toBytes);
         guidO.TryWriteBytes(toBytes);
@@ -29,7 +29,7 @@ public class BenchTryWriteBytes
     }
 
     [Benchmark]
-    public void GN_FromSpan()
+    public void GN_TryWriteBytes()
     {
         guidN.TryWriteBytes(toBytes);
         guidN.TryWriteBytes(toBytes);
