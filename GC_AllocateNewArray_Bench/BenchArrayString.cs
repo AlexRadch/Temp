@@ -4,8 +4,7 @@ using BenchmarkDotNet.Order;
 namespace GC_AllocateNewArray_Bench;
 
 [MemoryDiagnoser]
-[Orderer(SummaryOrderPolicy.Declared)]
-public class BenchFromSpan
+public class BenchArrayString
 {
     //[Params(0, 1, 5)]
     //[Params(0, 1, 5, 10, 100, 1_000)]
@@ -16,20 +15,20 @@ public class BenchFromSpan
     public int Count { get; set; }
 
     [Benchmark(Baseline = true)]
-    public void Array_Int_Create()
+    public void Create()
     {
-        _ = new int[Count];
+        _ = new string[Count];
     }
 
     [Benchmark]
-    public void Array_Int_Allocate()
+    public void Allocate()
     {
-        _ = GC.AllocateArray<int>(Count);
+        _ = GC.AllocateArray<string>(Count);
     }
 
     [Benchmark]
-    public void Array_Int_AllocateUninitialized()
+    public void AllocateUninitialized()
     {
-        _ = GC.AllocateUninitializedArray<int>(Count);
+        _ = GC.AllocateUninitializedArray<string>(Count);
     }
 }
